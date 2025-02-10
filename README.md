@@ -4,7 +4,7 @@
 
 This project provides a RESTful API for user relation. It is built using **FastAPI**, database by using **PostgreSQL**, ORM as **SQLalchemy** and includes database migrations via **Alembic**. The project structure ensures modularity, scalability, and ease of maintenance.
 
-Here attached whole project is done by following asynhronous manner. By using the `AsyncSession`, `AsyncEngine`, and `asyncpg` and **Async SQLalchemy**.
+Here attached whole project is done by following asynhronous manner and synchronoys approach. By using the `AsyncSession`, `AsyncEngine`, and `asyncpg` and **Async SQLalchemy** and `Session`, `create_engine` and **SQLalchemy**.
 
 ---
 
@@ -52,13 +52,19 @@ Handles custom exceptions used throughout the project.
 
 - **`exceptions.py`**: Defines application-specific exceptions.
 
-### 7. `utils` Directory
+### 8. `service` Directory
+Handles service layer and converter function for Database object to DTO and DTO to Database object.
+
+- **`converter.py`**: Handles the db to dto and dto to db converter function script for the API.
+- **`user_service.py`**: Handles the user service layer script.
+
+### 9. `utils` Directory
 Handles custom exceptions used throughout the project.
 
 - **`constants.py`**: Defines all your constants 
 - **`utils.py`**: Defines application-specific repetable code in this file to avoid redundant code.
 
-### 8. `tests` Directory
+### 10. `tests` Directory
 Handles database schema migrations.
 
 - **`test_users.py`**: Testing script for the API by using pytest module.
@@ -163,6 +169,9 @@ SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{settings.YOUR_DATABASE_USERNAM
    │   │   ├── version.py
    │   ├── exceptions
    │   │   └── user.py
+   │   ├── service
+   │   │   └── converter.py
+   │   │   ├── user_service.py
    │   ├── utils
    │   │   └── constants.py
    │   │   ├── utils.py
