@@ -20,10 +20,10 @@ class User(Base):
     )
     first_name = Column(String(512), nullable=False)
     last_name = Column(String(512), nullable=False)
-    gender = Column(INTEGER, nullable=False)
+    gender = Column(INTEGER, nullable=False, default=2)
     email = Column(String(1024), nullable=True)
     phone_number = Column(String(20), nullable=True)
-    status = Column(INTEGER, nullable=False)
+    status = Column(INTEGER, nullable=False, default=1)
     created_at = Column(
         TIMESTAMP(timezone=True),
         nullable=False,

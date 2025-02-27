@@ -1,4 +1,4 @@
-""" Service Version Endoint"""
+"""Service Version Endoint"""
 
 from http import HTTPStatus
 

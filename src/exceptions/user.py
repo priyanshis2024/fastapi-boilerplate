@@ -26,6 +26,7 @@ class InvalidSortingAttribute(HTTPException):
             detail=f"Invalid attribute '{attribute}' for sorting",
         )
 
+
 class InvalidStatusAttribute(HTTPException):
     """
     Exception raised when the provided attribute for status number is invalid.

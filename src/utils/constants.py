@@ -1,4 +1,4 @@
-""" This file contains the constants"""
+"""This file contains the constants"""
 
 from enum import Enum
 

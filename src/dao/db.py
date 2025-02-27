@@ -19,12 +19,14 @@ import asyncio
 
 # Base = declarative_base()
 
+
 # def get_db():
-#     db = SessionLocal()
+#     db_obj = SessionLocal()
 #     try:
-#         yield db
+#         yield db_obj
 #     finally:
-#         db.close()
+#         db_obj.close()
+
 
 SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{settings.DATABASE_USERNAME}:{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}/{settings.DATABASE_NAME}"
 
@@ -41,6 +43,7 @@ async def get_db():
     async with async_session() as session:
         yield session
 
+
 def transaction(func):
     """
     This function is a decorator that wraps the function it's applied to.
@@ -52,42 +55,34 @@ def transaction(func):
     """
 
     async def async_inner(*args, **kwargs):
-        db: AsyncSession = kwargs.get("db")
-        if db is None:
+        db_obj: AsyncSession = kwargs.get("db_obj")
+        if db_obj is None:
             raise ValueError("Database session 'db' is required in the arguments.")
-        
+
         try:
-            # Execute the function
             response = await func(*args, **kwargs)
-            # Commit the transaction
-            await db.commit()
+            await db_obj.commit()
             return response
         except Exception as database_exception:
-            # Rollback in case of an exception
-            await db.rollback()
+            await db_obj.rollback()
             raise database_exception
         finally:
-            # Ensure the session is closed after the transaction
-            await db.close()
+            await db_obj.close()
 
     def inner(*args, **kwargs):
-        db = kwargs.get("db")
-        if db is None:
-            raise ValueError("Database session 'db' is required in the arguments.")
-        
+        db_obj = kwargs.get("db_obj")
+        if db_obj is None:
+            raise ValueError("Database session 'db_obj' is required in the arguments.")
+
         try:
-            # Execute the function
             response = func(*args, **kwargs)
-            # Commit the transaction
-            db.commit()
+            db_obj.commit()
             return response
         except Exception as database_exception:
-            # Rollback in case of an exception
-            db.rollback()
+            db_obj.rollback()
             raise database_exception
         finally:
-            # Ensure the session is closed after the transaction
-            db.close()
+            db_obj.close()
 
     if asyncio.iscoroutinefunction(func):
         return async_inner

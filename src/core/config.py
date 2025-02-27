@@ -3,14 +3,15 @@ for example secret keys, database credentials"""
 
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
     """class for reading configurations from env file"""
 
-    DATABASE_HOST: str
-    DATABASE_PORT: int
-    DATABASE_PASSWORD: str
-    DATABASE_NAME: str
-    DATABASE_USERNAME: str
+    DATABASE_HOST: str = "hostname"
+    DATABASE_PORT: int = 1234
+    DATABASE_PASSWORD: str = "Paasword1234 "
+    DATABASE_NAME: str = "name"
+    DATABASE_USERNAME: str = "username"
 
     class Config:
         """

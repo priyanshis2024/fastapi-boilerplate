@@ -58,20 +58,24 @@ class UserResponse(CamelModel):
 
 
 class UserUpdate(CamelModel):
-    first_name: str = Field(
-        ..., title="First Name", description="The first name of the user"
+    first_name: Optional[str] = Field(
+        None, title="First Name", description="The first name of the user"
     )
-    last_name: str = Field(
-        ..., title="Last Name", description="The last name of the user"
+    last_name: Optional[str] = Field(
+        None, title="Last Name", description="The last name of the user"
     )
-    gender: int = Field(..., title="Gender", description="The gender of the user")
-    email: EmailStr = Field(
-        ..., title="Email", description="The email address of the user"
+    gender: Optional[int] = Field(
+        None, title="Gender", description="The gender of the user"
+    )
+    email: Optional[EmailStr] = Field(
+        None, title="Email", description="The email address of the user"
     )
     phone_number: Optional[str] = Field(
         None, title="Phone Number", description="The phone number of the user"
     )
-    status: int = Field(..., title="Status", description="The status of the user")
+    status: Optional[int] = Field(
+        None, title="Status", description="The status of the user"
+    )
 
 
 class UserUpdateStatus(CamelModel):

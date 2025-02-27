@@ -95,9 +95,7 @@ Handles database schema migrations.
    ```bash
    poetry install 
 
-4. Configure environment variables and set up the your `.env` file by adding necessary inputs to the variables in `.env` file :
-   ```bash
-   cp .env.template .env
+4. Configure environment variables and set up your `.env` file by adding necessary inputs to the variables in `.env` file.
 
 Update the `.env` file in database configuration details.
 
@@ -179,7 +177,6 @@ SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{settings.YOUR_DATABASE_USERNAM
    ├── tests
    │   ├── __init__.py
    │   ├── test_users.py
-   ├── .env.template
    ├── .gitignore
    ├── alembic.ini.template
    ├── main.py

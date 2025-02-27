@@ -1,4 +1,4 @@
-""" Service Status Endpoint"""
+"""Service Status Endpoint"""
 
 from http import HTTPStatus
 
