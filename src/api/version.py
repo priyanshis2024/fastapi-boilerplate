@@ -13,3 +13,13 @@ router = APIRouter(tags=["Version"])
 def get_version():
     """returns the service version"""
     return {"version": SERVICE_APP_VERSION}
+
+@router.get("/version", status_code=HTTPStatus.OK, response_model=VersionResponse)
+def get_version():
+    """returns the service version"""
+    return {"version": SERVICE_APP_VERSION}
+
+@router.get("/version", status_code=HTTPStatus.OK, response_model=VersionResponse)
+def get_version():
+    """returns the service version"""
+    return {"version": SERVICE_APP_VERSION}
