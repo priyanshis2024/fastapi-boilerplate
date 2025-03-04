@@ -12,8 +12,23 @@ class Converter:
         :param user: User database model
         :return: UserResponse DTO
         """
-        user_dict = jsonable_encoder(user)
-        return UserResponse(**user_dict)
+        # user_dict = jsonable_encoder(user)
+        # return UserResponse(**user_dict)
+        return User(
+            id=user.id,
+            address_id=user.address_id,
+            user_role_id=user.user_role_id,
+            contact=user.contact,
+            email=user.email,
+            password=user.password,
+            username=user.username,
+            image=user.image,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            gender=user.gender,
+            dob=user.dob,
+            is_active=user.is_active,
+        )
 
     def user_create_dto_to_db(user_create: UserCreate):
         """
